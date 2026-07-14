@@ -1,0 +1,124 @@
+/* ---- Colors defined once as "variables", so the whole page uses the same palette ---- */
+:root {
+  color-scheme: light;
+  --surface: #fcfcfb;      /* card background */
+  --page: #f9f9f7;         /* page background */
+  --text-primary: #0b0b0b;
+  --text-secondary: #52514e;
+  --border: rgba(11, 11, 11, 0.10);
+  --series-1: #2a78d6;     /* blue  -> Pokémon 1 */
+  --series-2: #e34948;     /* red   -> Pokémon 2 */
+
+  /* One color per stat, for pie/doughnut/polar charts (6 stats = 6 slices) */
+  --slice-1: #2a78d6;
+  --slice-2: #1baf7a;
+  --slice-3: #eda100;
+  --slice-4: #008300;
+  --slice-5: #4a3aa7;
+  --slice-6: #e34948;
+}
+
+/* If the user's system is in dark mode, swap the variable values.
+   Everything below keeps working because it only refers to the variables. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --surface: #1a1a19;
+    --page: #0d0d0d;
+    --text-primary: #ffffff;
+    --text-secondary: #c3c2b7;
+    --border: rgba(255, 255, 255, 0.10);
+    --series-1: #3987e5;
+    --series-2: #e66767;
+
+    --slice-1: #3987e5;
+    --slice-2: #199e70;
+    --slice-3: #c98500;
+    --slice-4: #008300;
+    --slice-5: #9085e9;
+    --slice-6: #e66767;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--text-primary);
+}
+
+.app {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 16px;
+}
+
+h1 {
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  color: var(--text-secondary);
+}
+
+/* The controls sit in one row and wrap on small screens */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text-primary);
+}
+
+.controls input {
+  flex: 1;
+  min-width: 160px;
+}
+
+.controls button {
+  cursor: pointer;
+  background: var(--series-1);
+  color: #ffffff;
+  border: none;
+}
+
+.error {
+  color: #d03b3b;
+}
+
+/* The grid: cards arrange themselves in columns of at least 320px,
+   and automatically wrap to fewer columns on small screens */
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* The white/dark card each chart lives on */
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.chart-card h2 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}

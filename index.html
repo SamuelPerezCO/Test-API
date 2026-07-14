@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pokémon Stats Charts</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="app">
+    <h1>Pokémon Stats Viewer</h1>
+    <p class="subtitle">Type a Pokémon name and see its base stats as a chart. Add a second one to compare.</p>
+
+    <!-- The controls: two text inputs and a button -->
+    <form id="search-form" class="controls">
+      <!-- list="pokemon-list" connects each input to the <datalist> below,
+           so the browser shows matching names as you type -->
+      <input type="text" id="pokemon-1" list="pokemon-list" placeholder="e.g. pikachu" required>
+      <input type="text" id="pokemon-2" list="pokemon-list" placeholder="compare with... (optional)">
+
+      <!-- Empty for now: script.js fills it with every Pokémon name at page load -->
+      <datalist id="pokemon-list"></datalist>
+      <button type="submit">Show stats</button>
+    </form>
+
+    <!-- Error messages appear here (e.g. Pokémon not found) -->
+    <p id="error-message" class="error" hidden></p>
+
+    <!-- Empty container: script.js creates one card (title + canvas) per chart type -->
+    <div id="charts" class="charts-grid"></div>
+  </main>
+
+  <!-- 1. Load the Chart.js library from a CDN (a public server that hosts it) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <!-- 2. Load our own code. It must come AFTER Chart.js so the library exists first -->
+  <script src="script.js"></script>
+</body>
+</html>
